@@ -20,6 +20,7 @@ Scope {
 
         Keyboard {
             id: keyboard
+            visible: false
         }
     }
 }

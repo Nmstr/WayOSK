@@ -29,6 +29,11 @@ PopupWindow {
             indicator.anchor.rect.x = startX + (mouse.x - dragOffsetX)
             indicator.anchor.rect.y = startY + (mouse.y - dragOffsetY)
         }
+        onReleased: {
+            if (startX === indicator.anchor.rect.x && startY === indicator.anchor.rect.y) {
+                keyboard.visible = !keyboard.visible
+            }
+        }
     }
 
     Rectangle {
