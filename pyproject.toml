@@ -1,0 +1,21 @@
+[project]
+name = "WayOsk"
+version = "0.1.0"
+readme = "README.md"
+description = "OSK for Wayland"
+requires-python = ">=3.13"
+authors = [
+    { name = "Nmstr", email = "publicNamester@gmail.com" }
+]
+keywords = ["Wayland", "On-Screen Keyboard", "OSK"]
+classifiers = [
+    "Topic :: Utilities",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+    "Intended Audience :: End Users/Desktop"
+]
+dependencies = []
+[project.urls]
+Source = "https://github.com/Nmstr/WayOsk"
+Issues = "https://github.com/Nmstr/WayOsk/issues"
