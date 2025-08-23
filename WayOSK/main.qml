@@ -17,5 +17,9 @@ Scope {
         Indicator {
             id: indicator
         }
+
+        Keyboard {
+            id: keyboard
+        }
     }
 }
