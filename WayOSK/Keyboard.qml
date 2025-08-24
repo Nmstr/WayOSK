@@ -1,6 +1,6 @@
 import Quickshell
+import Quickshell.Io
 import QtQuick
-import QtQuick.Controls
 
 PanelWindow {
     id: keyboard
@@ -19,6 +19,11 @@ PanelWindow {
         ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
         ["Z", "X", "C", "V", "B", "N", "M"]
     ]
+    
+    Socket {
+        id: keyboardSocket
+        path: "/tmp/wayosk.sock"
+    }
 
     Rectangle {
         anchors.fill: parent
@@ -35,10 +40,9 @@ PanelWindow {
                     spacing: 8
                     Repeater {
                         model: modelData
-                        delegate: Button {
-                            text: modelData
-                            width: 40
-                            height: 40
+                        delegate: KeyboardKey {
+                            keyValue: modelData
+                            socketConnection: keyboardSocket
                         }
                     }
                 }
