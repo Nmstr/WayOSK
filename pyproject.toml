@@ -15,7 +15,9 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
     "Intended Audience :: End Users/Desktop"
 ]
-dependencies = []
+dependencies = [
+    "waykey>=0.1.0",
+]
 [project.urls]
 Source = "https://github.com/Nmstr/WayOsk"
 Issues = "https://github.com/Nmstr/WayOsk/issues"
