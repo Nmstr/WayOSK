@@ -6,7 +6,6 @@ Button {
     id: keyButton
     property string key: ""
     property string label: ""
-    property Socket socketConnection: null
 
     text: label
     width: 40
@@ -19,10 +18,10 @@ Button {
     }
 
     onClicked: {
-        if (socketConnection) {
-            socketConnection.connected = true
-            socketConnection.write(key)
-            socketConnection.flush()
+        if (keyboard.keyboardSocket) {
+            keyboard.keyboardSocket.connected = true
+            keyboard.keyboardSocket.write(key)
+            keyboard.keyboardSocket.flush()
         } else {
             console.error("Socket is not connected")
         }

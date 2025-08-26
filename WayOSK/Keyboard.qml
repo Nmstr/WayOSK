@@ -15,6 +15,7 @@ PanelWindow {
     }
 
     property string layoutPath: ""
+    property Socket keyboardSocket: keyboardSocket
 
     Socket {
         id: keyboardSocket
