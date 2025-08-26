@@ -29,7 +29,7 @@ class KeyboardServer:
                 if not data:
                     continue
 
-                wk.click(f"KEY_{data}")
+                wk.click(data)
 
     def cleanup(self):
         if self.server:

@@ -4,10 +4,11 @@ import QtQuick.Controls
 
 Button {
     id: keyButton
-    property string keyValue: ""
+    property string key: ""
+    property string label: ""
     property Socket socketConnection: null
 
-    text: keyValue
+    text: label
     width: 40
     height: 40
     font.pixelSize: 20
@@ -20,7 +21,7 @@ Button {
     onClicked: {
         if (socketConnection) {
             socketConnection.connected = true
-            socketConnection.write(keyValue)
+            socketConnection.write(key)
             socketConnection.flush()
         } else {
             console.error("Socket is not connected")

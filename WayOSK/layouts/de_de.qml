@@ -22,7 +22,8 @@ Rectangle {
                 Repeater {
                     model: modelData
                     delegate: KeyboardKey {
-                        keyValue: modelData
+                        key: "KEY_" + modelData
+                        label: modelData
                         socketConnection: keyboardSocket
                     }
                 }
