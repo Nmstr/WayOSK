@@ -14,39 +14,26 @@ PanelWindow {
         right: true
     }
 
-    property var keyRows: [
-        ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-        ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-        ["Z", "X", "C", "V", "B", "N", "M"]
-    ]
-    
+    property string layoutPath: ""
+    property Socket keyboardSocket: keyboardSocket
+
     Socket {
         id: keyboardSocket
         path: "/tmp/wayosk.sock"
     }
 
-    Rectangle {
-        anchors.fill: parent
-        color: "gray"
-        opacity: 0.75
+    IpcHandler {
+        target: "keyboard"
 
-        Column {
-            anchors.centerIn: parent
-            spacing: 8
-
-            Repeater {
-                model: keyRows
-                delegate: Row {
-                    spacing: 8
-                    Repeater {
-                        model: modelData
-                        delegate: KeyboardKey {
-                            keyValue: modelData
-                            socketConnection: keyboardSocket
-                        }
-                    }
-                }
-            }
+        function setLayoutPath(path: string): void {
+            keyboard.layoutPath = path
         }
+    }
+
+    Loader {
+        id: keyboardLoader
+        anchors.fill: parent
+        source: keyboard.layoutPath
+        active: keyboard.layoutPath !== ""
     }
 }
