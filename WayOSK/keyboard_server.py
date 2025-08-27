@@ -29,7 +29,10 @@ class KeyboardServer:
                 if not data:
                     continue
 
-                wk.click(data)
+                try:
+                    wk.click(data)
+                except Exception as e:
+                    print(f"Error sending key: {e}")
 
     def cleanup(self):
         if self.server:
