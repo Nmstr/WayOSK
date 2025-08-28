@@ -18,18 +18,19 @@ Button {
     }
 
     onPressed: {
-        if (keyboard.keyboardSocket) {
-            keyboard.keyboardSocket.connected = true
-            keyboard.keyboardSocket.write("press " + key)
-            keyboard.keyboardSocket.flush()
-        } else {
-            console.error("Socket is not connected")
-        }
+        sendKey("press")
     }
     onReleased: {
+        sendKey("release")
+    }
+    onCanceled: {
+        sendKey("release")
+    }
+
+    function sendKey(action: string) {
         if (keyboard.keyboardSocket) {
             keyboard.keyboardSocket.connected = true
-            keyboard.keyboardSocket.write("release " + key)
+            keyboard.keyboardSocket.write(action + " " + key)
             keyboard.keyboardSocket.flush()
         } else {
             console.error("Socket is not connected")
