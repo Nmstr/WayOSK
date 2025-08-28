@@ -17,10 +17,19 @@ Button {
         radius: 5
     }
 
-    onClicked: {
+    onPressed: {
         if (keyboard.keyboardSocket) {
             keyboard.keyboardSocket.connected = true
-            keyboard.keyboardSocket.write(key)
+            keyboard.keyboardSocket.write("press " + key)
+            keyboard.keyboardSocket.flush()
+        } else {
+            console.error("Socket is not connected")
+        }
+    }
+    onReleased: {
+        if (keyboard.keyboardSocket) {
+            keyboard.keyboardSocket.connected = true
+            keyboard.keyboardSocket.write("release " + key)
             keyboard.keyboardSocket.flush()
         } else {
             console.error("Socket is not connected")

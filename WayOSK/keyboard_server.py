@@ -25,14 +25,21 @@ class KeyboardServer:
         while True:
             conn, _ = self.server.accept()
             with conn:
-                data = conn.recv(1024).decode("utf-8")
+                data = conn.recv(1024).decode("utf-8").split()
                 if not data:
                     continue
 
-                try:
-                    wk.click(data)
-                except Exception as e:
-                    print(f"Error sending key: {e}")
+                if len(data) == 2:
+                    if data[0] == "press":
+                        try:
+                            wk.press(data[1])
+                        except Exception as e:
+                            print(f"Error pressing key: {e}")
+                    elif data[0] == "release":
+                        try:
+                            wk.release(data[1])
+                        except Exception as e:
+                            print(f"Error releasing key: {e}")
 
     def cleanup(self):
         if self.server:
