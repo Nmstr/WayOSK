@@ -13,6 +13,7 @@ if shutil.which("quickshell") is None:
 
 server = KeyboardServer(SOCKET_PATH)
 config_handler = ConfigHandler()
+quickshell_process = None
 
 try:
     utils_path = os.path.dirname(os.path.abspath(__file__))
@@ -27,5 +28,9 @@ try:
         time.sleep(0.1)
 
     quickshell_process.wait()
+except KeyboardInterrupt:
+    if quickshell_process and quickshell_process.poll() is None:
+        quickshell_process.terminate()
+        quickshell_process.wait()
 finally:
     server.cleanup()
