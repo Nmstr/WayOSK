@@ -73,7 +73,7 @@ Rectangle {
         ],
         [
             { key: "KEY_LEFTSHIFT", label: "Shift", width: 1.25 },
-            { key: "KEY_LESS", label: "<" },
+            { key: "KEY_102ND", label: "<" },
             { key: "KEY_Z", label: "Y" },
             { key: "KEY_X", label: "X" },
             { key: "KEY_C", label: "C" },
